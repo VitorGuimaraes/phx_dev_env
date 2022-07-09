@@ -4,7 +4,7 @@ docker compose build \
 docker compose run app bash
 
 [container]
-mix phx.new "$(pwd)" [--no-ecto]
+mix phx.new . [--no-ecto if you won't use db]
 
 [host]
 In config/dev.exs change the ip to {0, 0, 0, 0} so is possible to access from the host machine.
