@@ -17,3 +17,6 @@ If you change the user or password from postgres, change it in config/dev.exs an
 
 [host]
 In the host terminal run: sudo chown -R $USER *
+
+[host]
+rm Dockerfile.set_dev_environment docker-compose.yaml
