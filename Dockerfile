@@ -14,9 +14,4 @@ ENV APP_HOME /app
 RUN mkdir -p $APP_HOME
 WORKDIR $APP_HOME
 
-RUN touch Dockerfile && \
-    touch Dockerfile.prod
-
-CMD ["mix", "phx.server"]
-
 EXPOSE 4000
