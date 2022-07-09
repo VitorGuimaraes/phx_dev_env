@@ -1,7 +1,6 @@
-mkdir project_name && \
-cd project_name 
+mkdir project_name && cd project_name 
 
-docker compose build 
+docker compose build \
 docker compose run app bash
 
 [container]
