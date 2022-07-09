@@ -1,0 +1,10 @@
+version: "3"
+services: 
+  app:
+    build: 
+      context: .
+      dockerfile: Dockerfile.set_dev_environment
+    image: phoenix_container
+    container_name: phoenix_container
+    volumes:
+      - .:/app
