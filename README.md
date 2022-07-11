@@ -38,7 +38,8 @@ In the container's terminal, run:
 > mix phx.new .<br>
 > exit
 
-The dot at the end of the command means that the project will be created at the current directory. Use `mix phx.new . --no-ecto` if you don't need database.
+The dot at the end of the command means that the project will be created at the current directory.<br> 
+Use `mix phx.new . --no-ecto` if you don't need database.
 
 ### 7. Set up your project
 - In `config/dev.exs` change the ip to `{0, 0, 0, 0}` so wil be possible to access the application endpoint from the host machine.<br>
