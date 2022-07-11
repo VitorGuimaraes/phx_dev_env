@@ -22,25 +22,25 @@ In your terminal, create your `project_name` folder and `cd` to it.
 In your terminal use `git` to clone the repository locally.
 > git clone https://github.com/VitorGuimaraes/phx_dev
 
-### Give permission to execute the bash script
+### 3. Give permission to execute the bash script
 > sudo chmod +x phx_dev/run.sh
 
-### 3. Run the shell script
+### 4. Run the shell script
 It will copy the `Dockerfile` and `docker-compose` files to your project's directory, build the image and than delete the folder `/phx_dev`. 
 Check `run.sh` file for more information.  
 > ./phx_dev/run.sh 
 
-### 4. Run the container
+### 5. Run the container
 > docker compose run app bash
 
-### 5. Create your Phoenix Project
+### 6. Create your Phoenix Project
 In the container's terminal, run:
 > mix phx.new .
 > exit
 
 The dot at the end of the command means that the project will be created at the current directory. Use `mix phx.new . --no-ecto` if you don't need database.
 
-### 6. Set up your project
+### 7. Set up your project
 In `config/dev.exs` change the ip to `{0, 0, 0, 0}` so wil be possible to access the application endpoint from the host machine.
 
 Change the `hostname` from the database to **db** (this is the default database name in docker-compose file)
