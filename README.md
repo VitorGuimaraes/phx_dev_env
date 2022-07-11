@@ -17,6 +17,11 @@ If you change the user or password from postgres, change it in config/dev.exs an
 
 [host]
 In the host terminal run: sudo chown -R $USER *
+You need run this command always that a new file is created
 
-[host]
-rm Dockerfile.set_dev_environment docker-compose.yaml
+TODO
+adicionar .sh que copia o Dockerfile e docker compose pra raiz do projeto e deleta a pasta do git clone
+o .sh deverá ser executado da pasta raiz do projeto, por ex: ./dev_phoenix_image/run.sh
+.sh:
+cp Dockerfile docker-compose.yaml ../
+rm -rf dev_phoenix_image
