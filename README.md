@@ -42,11 +42,11 @@ The dot at the end of the command means that the project will be created at the 
 Use `mix phx.new . --no-ecto` if you don't need database.
 
 ### 7. Set up your project
+- In the host terminal run: `sudo chown -R $USER *`<br>
+You need run this command always that a new file is created from the running container, because the files created from the container are associated to the user and group of the container, not of the host machine.<br>
 - In `config/dev.exs` change the ip to `{0, 0, 0, 0}` so wil be possible to access the application endpoint from the host machine.<br>
 - Change the `hostname` from the database to **db** (this is the default database name in docker-compose file)<br>
-If you change the user or password from postgres, change it in `config/dev.exs` and `config/test.exs`.<br>
-- In the host terminal run: `sudo chown -R $USER *`<br>
-You need run this command always that a new file is created from the running container, because the files created from the container are associated to the user and group of the container, not of the host machine. 
+If you change the user or password from postgres, change it in `config/dev.exs` and `config/test.exs`.
 
 ## Managing the image and container
 `docker compose build` - build the image.<br>
