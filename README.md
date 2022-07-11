@@ -16,27 +16,27 @@ The project is created with:
 
 ### 1. Create your project:
 In your terminal, create your project directory and `cd` to it.
-> `mkdir project_name && cd project_name` 
+> mkdir project_name && cd project_name 
 
 ### 2. Clone the repository locally  
 In your terminal use `git` to clone the repository locally.
 > git clone https://github.com/VitorGuimaraes/phx_dev
 
 ### Give permission to execute the bash script
-> `sudo chmod +x phx_dev/run.sh`
+> sudo chmod +x phx_dev/run.sh
 
 ### 3. Run the shell script
 It will copy the `Dockerfile` and `docker-compose` files to your project's directory, build the image and than delete the folder `/phx_dev`. 
 Check `run.sh` file for more information.  
-> `./phx_dev/run.sh` 
+> ./phx_dev/run.sh 
 
 ### 4. Run the container
-> `docker compose run app bash`
+> docker compose run app bash
 
 ### 5. Create your Phoenix Project
 In the container's terminal, run:
-> `mix phx.new .`
-> `exit`
+> mix phx.new .
+> exit
 
 The dot at the end of the command means that the project will be created at the current directory. Use `mix phx.new . --no-ecto` if you don't need database.
 
