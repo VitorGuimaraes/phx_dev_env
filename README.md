@@ -15,8 +15,8 @@ The project is created with:
 ## How to run 
 
 ### 1. Create your project:
-In your terminal, create your project directory and `cd` to it.
-> mkdir project_name && cd project_name 
+In your terminal, create your `project_name` folder and `cd` to it.
+> mkdir `project_name` && cd `project_name` 
 
 ### 2. Clone the repository locally  
 In your terminal use `git` to clone the repository locally.
