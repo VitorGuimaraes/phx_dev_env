@@ -3,8 +3,8 @@ services:
   app:
     build: 
       context: .
-      dockerfile: Dockerfile.set_dev_environment
-    image: phoenix_container
-    container_name: phoenix_container
+      dockerfile: Dockerfile.phx_dev
+    image: phx_dev
+    container_name: phx_dev
     volumes:
       - .:/app
