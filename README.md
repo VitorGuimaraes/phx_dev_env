@@ -20,7 +20,7 @@ In your terminal, create your `project_name` folder and `cd` to it.
 
 ### 2. Clone the repository locally  
 In your terminal use `git` to clone the repository locally.
-> git clone https://github.com/VitorGuimaraes/phx_dev
+> git clone https://github.com/VitorGuimaraes/phx_dev.git
 
 ### 3. Give permission to execute the bash script
 > sudo chmod +x phx_dev/run.sh
