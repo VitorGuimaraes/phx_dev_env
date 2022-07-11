@@ -42,8 +42,42 @@ The dot at the end of the command means that the project will be created at the 
 Use `mix phx.new . --no-ecto` if you don't need database.
 
 ### 7. Set up your project
-- In the host terminal run: `sudo chown -R $USER *`<br>
-You need run this command always that a new file is created from the running container, because the files created from the container are associated to the user and group of the container, not of the host machine.<br>
+1. In the host terminal run: `sudo chown -R $USER *`<br>
+You need run this command always that a new file is created from the running container, because the files created from the container are associated to the user and group of the container, not of the host machine.
+
+User owner before `chown`:
+```
+Permissions Size User     Date Modified Name
+drwxr-xr-x     - root     11 jul 15:25  _build
+drwxr-xr-x     - root     11 jul 15:25  assets
+drwxr-xr-x     - root     11 jul 15:25  config
+drwxr-xr-x     - root     11 jul 15:25  deps
+.rw-rw-r--   171 predator 11 jul 15:24  docker-compose.yaml
+.rw-rw-r--   245 predator 11 jul 15:24  Dockerfile.phx_dev
+drwxr-xr-x     - root     11 jul 15:25  lib
+.rw-r--r--  2,0k root     11 jul 15:25  mix.exs
+.rw-r--r--   12k root     11 jul 15:25  mix.lock
+drwxr-xr-x     - root     11 jul 15:25  priv
+.rw-r--r--   694 root     11 jul 15:25  README.md
+drwxr-xr-x     - root     11 jul 15:25  test
+```
+User owner after `chown`:
+```
+Permissions Size User     Date Modified Name
+drwxr-xr-x     - predator 11 jul 15:25  _build
+drwxr-xr-x     - predator 11 jul 15:25  assets
+drwxr-xr-x     - predator 11 jul 15:25  config
+drwxr-xr-x     - predator 11 jul 15:25  deps
+.rw-rw-r--   171 predator 11 jul 15:24  docker-compose.yaml
+.rw-rw-r--   245 predator 11 jul 15:24  Dockerfile.phx_dev
+drwxr-xr-x     - predator 11 jul 15:25  lib
+.rw-r--r--  2,0k predator 11 jul 15:25  mix.exs
+.rw-r--r--   12k predator 11 jul 15:25  mix.lock
+drwxr-xr-x     - predator 11 jul 15:25  priv
+.rw-r--r--   694 predator 11 jul 15:25  README.md
+drwxr-xr-x     - predator 11 jul 15:25  test
+```
+
 - In `config/dev.exs` change the ip to `{0, 0, 0, 0}` so wil be possible to access the application endpoint from the host machine.<br>
 - Change the `hostname` from the database to **db** (this is the default database name in docker-compose file)<br>
 If you change the user or password from postgres, change it in `config/dev.exs` and `config/test.exs`.
