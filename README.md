@@ -83,8 +83,8 @@ drwxr-xr-x     - predator 11 jul 15:25  test
 If you change the user or password from postgres, change it in `config/dev.exs` and `config/test.exs`.
 
 ## Managing the image and container
-- `docker compose build`          build the image.<br>
-- `docker compose run app bash`   run the container and open bash.<br>
-- `docker compose down`           down containers   
-- `docker rm phx_dev`             stop and delete the running container.<br> 
-- `docker rmi phx_dev`            delete phx_dev image.
+- `docker compose -f docker-compose_dev.yaml build `                  build the image.<br>
+- `docker compose -f docker-compose_dev.yaml -p phx_env run dev bash` run the container and open bash.<br>
+- `docker compose down`                                               down containers<br>   
+- `docker rm phx_dev`                                                 stop and delete the running container.<br> 
+- `docker rmi phx_dev`                                                delete phx_dev image.

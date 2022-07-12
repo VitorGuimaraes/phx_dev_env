@@ -1,10 +1,9 @@
 version: "3"
 services: 
-  app:
+  dev:
     build: 
       context: .
-      dockerfile: Dockerfile.phx_dev
+      dockerfile: Dockerfile.dev
     image: phx_dev
-    container_name: phx_dev
     volumes:
       - .:/app

@@ -1,4 +1,4 @@
-cp phx_dev/Dockerfile.phx_dev phx_dev/docker-compose.yaml . 
+cp phx_dev/Dockerfile.dev phx_dev/docker-compose_dev.yaml . 
 rm -rf phx_dev
 
-docker compose build
+docker compose -f docker-compose_dev.yaml build
