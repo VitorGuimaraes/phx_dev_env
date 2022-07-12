@@ -79,12 +79,17 @@ drwxr-xr-x     - predator 11 jul 15:25  test
 ```
 
 - In `config/dev.exs` change the ip to `{0, 0, 0, 0}` so wil be possible to access the application endpoint from the host machine.<br>
-- Change the `hostname`' database to **db** (this is the default database name in `docker-compose_dev.yaml`)<br>
+- Change the database's `hostname` to **db** (this is the default database name in `docker-compose_dev.yaml`)<br>
 If you change the user or password of postgres, change it in `config/dev.exs` and `config/test.exs`.
 
 ## Managing the image and container
-- `docker compose -f docker-compose_dev.yaml build`                   build the image.<br>
-- `docker compose -f docker-compose_dev.yaml -p phx_env run dev bash` run the container and open bash.<br>
-- `docker compose down`                                               down containers<br>   
-- `docker rm phx_dev_env`                                             stop and delete the running container.<br> 
-- `docker rmi phx_dev_env`                                            delete phx_dev_env image.
+- `docker compose -f docker-compose_dev.yaml build`<br>
+   build the image.
+- `docker compose -f docker-compose_dev.yaml -p phx_dev_env run dev bash`<br> 
+   run the container and open bash.<br>
+- `docker compose down`<br>
+   down containers<br>   
+- `docker rm phx_dev_env`<br>
+   stop and delete the running container.<br> 
+- `docker rmi phx_dev_env`<br>
+   delete phx_dev_env image.
