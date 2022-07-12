@@ -14,7 +14,7 @@ The project is created with:
 
 ## How to run 
 
-### 1. Create your project:
+### 1. Create your project
 In your terminal, create your `project_name` folder and `cd` to it.
 > mkdir `project_name` && cd `project_name` 
 
