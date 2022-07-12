@@ -27,7 +27,7 @@ In your terminal use `git` to clone the repository locally.
 
 ### 4. Run the shell script
 It will copy the `Dockerfile` and `docker-compose` files to your project's directory, build the image and than delete the folder `/phx_dev`.<br> 
-Check `run.sh` file for more information.  
+Check [`run.sh`](https://github.com/VitorGuimaraes/phx_dev/blob/master/run.sh) file for more information.  
 > ./phx_dev/run.sh 
 
 ### 5. Run the container
