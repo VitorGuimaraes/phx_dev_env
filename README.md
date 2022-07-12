@@ -31,7 +31,7 @@ Check [`run.sh`](https://github.com/VitorGuimaraes/phx_dev/blob/master/run.sh) f
 > ./phx_dev/run.sh 
 
 ### 5. Run the container
-> docker compose run app bash
+> docker compose -f docker-compose_dev.yaml -p phx_env run dev bash
 
 ### 6. Create your Phoenix Project
 In the container's terminal, run:
@@ -83,7 +83,7 @@ drwxr-xr-x     - predator 11 jul 15:25  test
 If you change the user or password from postgres, change it in `config/dev.exs` and `config/test.exs`.
 
 ## Managing the image and container
-- `docker compose -f docker-compose_dev.yaml build `                  build the image.<br>
+- `docker compose -f docker-compose_dev.yaml build`                   build the image.<br>
 - `docker compose -f docker-compose_dev.yaml -p phx_env run dev bash` run the container and open bash.<br>
 - `docker compose down`                                               down containers<br>   
 - `docker rm phx_dev`                                                 stop and delete the running container.<br> 
