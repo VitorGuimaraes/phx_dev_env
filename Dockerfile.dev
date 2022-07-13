@@ -1,7 +1,6 @@
-FROM elixir:latest
+FROM elixir:alpine
 
-RUN apt update -y && \
-    apt upgrade -y 
+RUN apk add bash 
 
 RUN mix local.hex --force && \
     mix local.rebar --force && \
