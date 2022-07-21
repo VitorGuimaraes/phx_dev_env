@@ -88,5 +88,5 @@ up services.
 - `docker compose -f $COMPOSE_FILE -p $PROJECT_NAME run --rm dev sh`<br> 
    run a new container with shell and clean up when exit.
 
-- `docker compose down`<br>  
+- `docker compose down`  
    down services 
