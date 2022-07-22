@@ -70,10 +70,10 @@ You can use the variables in `.env` to config postgres variables in compose file
 ```
 In `config/dev.exs` change the ip to `{0, 0, 0, 0}` so wil be possible to access the application endpoint from the host machine.<br>
 
-### 8. Up Phoenix server
+### 8. Get and compile dependencies
 `docker exec -it $CONTAINER_NAME sh` <br>
-> mix deps.get 
-> mix deps.compile
+> mix deps.get<br> 
+> mix deps.compile<br>
 > exit
 
 Visit [`http://localhost:4000/`](http://localhost:4000/) 
