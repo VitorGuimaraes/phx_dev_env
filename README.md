@@ -57,7 +57,7 @@ drwxr-xr-x     - predator 11 jul 15:25  assets
 drwxr-xr-x     - predator 11 jul 15:25  config
 ```
 
-### 7. Config you `config/dev.exs`
+### 7. Set up your `config/dev.exs`
 You can use the variables in `.env` to config postgres variables in compose file. Copy them to your `dev.exs` changing `username`, `password`, `hostname` and `database`. Also change the `pool_size` to `2` 
 ```
    username: "postgres",
