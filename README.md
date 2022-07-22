@@ -32,7 +32,7 @@ Check [`run.sh`](https://github.com/VitorGuimaraes/phx_dev_env/blob/master/run.s
 
 ### 5. Create your Phoenix Project
 In the container's terminal, run:
-> mix phx.new .
+> mix phx.new .<br>
 > exit
 
 The dot at the end of the command means that the project will be created at the current directory.<br> 
