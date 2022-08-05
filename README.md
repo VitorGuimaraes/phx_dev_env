@@ -71,22 +71,26 @@ You can use the variables in `.env` to config postgres variables in compose file
 In `config/dev.exs` change the ip to `{0, 0, 0, 0}` so wil be possible to access the application endpoint from the host machine.<br>
 
 ### 8. Get and compile dependencies
-`docker exec -it $CONTAINER_NAME sh` <br>
+`docker compose -f $COMPOSE_FILE -p $PROJECT_NAME run --rm dev sh` <br>
 > mix deps.get<br> 
 > mix deps.compile<br>
 > exit
 
-Visit [`http://localhost:4000/`](http://localhost:4000/) 
+obs: check if you have postgres and phx_dev containers up. If not, run:<br>
+`docker compose -f $COMPOSE_FILE -p $PROJECT_NAME up -d`<br> 
+
+Visit [`http://localhost:4000/`](http://localhost:4000/)<br>
 
 ## 9. Managing the image and container
 - `docker compose -f $COMPOSE_FILE -p $PROJECT_NAME up -d`<br> 
 up services.
+
+- `docker compose down`  
+   down services 
 
 - `docker exec -it $CONTAINER_NAME sh`<br> 
    exec shell in a running container.
 
 - `docker compose -f $COMPOSE_FILE -p $PROJECT_NAME run --rm dev sh`<br> 
    run a new container with shell and clean up when exit.
-
-- `docker compose down`  
-   down services 
+   
