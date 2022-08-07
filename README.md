@@ -84,7 +84,7 @@ obs: check if you have postgres and phx_dev containers up. If not, run:<br>
 
 Visit [`http://localhost:4000/`](http://localhost:4000/)<br>
 
-## 10. Managing the image and container
+## 10. Managing images and containers
 - `docker compose -f $COMPOSE_FILE -p $PROJECT_NAME up -d`<br> 
 up services.
 
