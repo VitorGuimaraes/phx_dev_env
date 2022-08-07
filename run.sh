@@ -6,10 +6,6 @@ cp phx_dev_env/.env.sample .env
 cp phx_dev_env/ci_pipeline.sh .
 cp phx_dev_env/entrypoint.sh .
 
-# add files and folders to gitignore
-echo "commitlint.config.js" tee | .gitignore
-echo 
-
 source .env
 
 rm -rf phx_dev_env
@@ -30,6 +26,9 @@ commitizen init cz-conventional-changelog --save-dev --save-exact
 # run husky and create commitlint hook for commit-msg
 npx husky install
 npx husky add .husky/commit-msg 'npx --no -- commitlint --edit "$1"'
+
+# add files and folders to gitignore
+echo "commitlint.config.js" tee | .gitignore
 
 # Runs container with shell. You should run "mix phx.new ." on it
 docker compose -f $COMPOSE_FILE -p $PROJECT_NAME run --rm dev sh
