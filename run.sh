@@ -8,7 +8,7 @@ mv .env.sample .env
 
 source .env 
 
-# Runs container with shell. You should run "mix phx.new ." on it
+# Runs container with shell. You should run "mix phx.new your_project_name" on it
 docker compose -f $COMPOSE_FILE -p $PROJECT_NAME run --rm dev sh
 
 sudo chown -R $USER *
@@ -22,7 +22,7 @@ project_dir="$(pwd)/${project_folder}"
 # move phoenix project files to current path
 sudo mv -v $project_dir* $project_dir.* $(pwd)
 
-# delete phoenix folder
+# delete the empty phoenix folder
 rm -rf $project_folder
 
 # current parent dir
