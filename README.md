@@ -22,7 +22,7 @@ In your terminal use `git` to clone the repository locally.
 In `.env.sample` you can setup your postgres variables and some variables used in [`docker-compose_dev.yaml`](https://github.com/VitorGuimaraes/phx_dev_env/blob/master/docker-compose_dev.yaml).
 
 ### 3. Give permission to execute the bash scripts
-> chmod +x phx_dev_env/*.sh
+> chmod +x *.sh
 
 ### 4. Run the shell script
 It will run a elixir container in shell, so you can create your Phoenix project.<br> 
