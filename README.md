@@ -37,7 +37,7 @@ In the container's terminal, run:
 Use `--no-ecto` at the end of this command if you don't need database.
 
 ### 6. Set up your `config/dev.exs`
-You can use the variables in `.env` to config postgres variables in compose file. Copy them to your `dev.exs` changing `username`, `password`, `hostname` and `database`. Also change the `pool_size` to `2` 
+You can use the variables in `.env` to config postgres variables in compose file. If you changed them in [step 2](###-2.-Setup-your-project-variables-in-.env.sample), copy them to your `dev.exs` changing `username`, `password`, `hostname` and `database`. Also change the `pool_size` to `2` 
 ```
    username: "postgres",
    password: "postgres",
