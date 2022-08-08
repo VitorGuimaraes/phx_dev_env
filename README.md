@@ -19,7 +19,7 @@ In your terminal use `git` to clone the repository locally.
 > git clone https://github.com/VitorGuimaraes/phx_dev_env.git
 
 ### 2. Setup your project variables in .env.sample 
-In `.env.sample` you can setup your postgres variables and some variables used in docker-compose_dev.yaml.
+In `.env.sample` you can setup your postgres variables and some variables used in [`docker-compose_dev.yaml`](https://github.com/VitorGuimaraes/phx_dev_env/blob/master/docker-compose_dev.yaml).
 
 ### 3. Give permission to execute the bash scripts
 > chmod +x phx_dev_env/*.sh
