@@ -1,14 +1,41 @@
 #!/usr/bin/env bash
 
-cp phx_dev_env/Dockerfile.dev . 
-cp phx_dev_env/docker-compose_dev.yaml . 
-cp phx_dev_env/.env.sample .env 
-cp phx_dev_env/ci_pipeline.sh .
-cp phx_dev_env/entrypoint.sh .
+# delete old git files 
+rm -rf .git 
+rm .gitignore
 
-source .env
+mv .env.sample .env
 
-rm -rf phx_dev_env
+source .env 
+
+# Runs container with shell. You should run "mix phx.new ." on it
+docker compose -f $COMPOSE_FILE -p $PROJECT_NAME run --rm dev sh
+
+sudo chown -R $USER *
+
+# project folder's name defined when create phoenix project
+project_folder=$(echo */)
+
+# phoenix project dir 
+project_dir="$(pwd)/${project_folder}"
+
+# move phoenix project files to current path
+sudo mv -v $project_dir* $project_dir.* $(pwd)
+
+# delete phoenix folder
+rm -rf $project_folder
+
+# current parent dir
+current_dir=${PWD%/*}/$1
+
+# new folder name accordingly with project name
+new_dir="${current_dir}${project_folder}"
+
+# rename current folder with project name 
+mv $(pwd) $new_dir
+
+# delete this bash script
+rm run.sh
 
 # init git and npm
 git init
@@ -28,7 +55,11 @@ npx husky install
 npx husky add .husky/commit-msg 'npx --no -- commitlint --edit "$1"'
 
 # add files and folders to gitignore
-echo "commitlint.config.js" tee | .gitignore
+echo "commitlint.config.js" >> .gitignore
+echo "package-lock.json" >> .gitignore
+echo "package.json" >> .gitignore
+echo "/node_modules" >> .gitignore
+echo "/.husky" >> .gitignore
 
-# Runs container with shell. You should run "mix phx.new ." on it
-docker compose -f $COMPOSE_FILE -p $PROJECT_NAME run --rm dev sh
+# update current shell references
+exec $SHELL
