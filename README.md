@@ -23,7 +23,7 @@ In your terminal use `git` to clone the repository locally.
 > git clone https://github.com/VitorGuimaraes/phx_dev_env.git
 
 ### 3. Give permission to execute the bash scripts
-> sudo chmod +x phx_dev_env/*.sh
+> chmod +x phx_dev_env/*.sh
 
 ### 4. Run the shell script
 It will copy the files to your project's directory, build the image, delete the folder `/phx_dev_env` and start a container in shell.<br> 
