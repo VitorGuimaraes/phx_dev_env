@@ -34,6 +34,12 @@ new_dir="${current_dir}${project_folder}"
 # rename current folder with project name 
 mv $(pwd) $new_dir
 
+# change POSTGRES_DB in env file accordingly with project name
+db_name=$(basename $(pwd))
+db_name="${db_name}_DEV"
+db_name=$(echo "$db_name" | tr '[:upper:]' '[:lower:]')
+sed -i "s/POSTGRES_DB=.*/POSTGRES_DB=$db_name/" .env
+
 # delete this bash script
 rm run.sh
 
