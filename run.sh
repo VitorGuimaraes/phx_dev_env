@@ -24,7 +24,7 @@ sed -i "s/POSTGRES_DB=.*/POSTGRES_DB=$db_name/" .env
 # change POSTGRES_HOST in env file and hostname in config/dev.exs 
 postgres_host=postgres_container
 sed -i "s/POSTGRES_HOST=.*/POSTGRES_HOST=$postgres_host/" .env
-sed -i "s/hostname: .*/hostname: \"$postgres_host\"/" ${project_folder}config/dev.exs
+sed -i "s/hostname: .*/hostname: \"$postgres_host\",/" ${project_folder}config/dev.exs
 
 # change pool_size in config/dev.exs to 2
 sed -i "s/pool_size: .*/pool_size: 2/" ${project_folder}config/dev.exs
