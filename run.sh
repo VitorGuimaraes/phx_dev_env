@@ -2,7 +2,6 @@
 
 # delete old git files 
 rm -rf .git 
-rm .gitignore
 
 mv .env.sample .env
 
