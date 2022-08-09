@@ -40,6 +40,9 @@ db_name="${db_name}_DEV"
 db_name=$(echo "$db_name" | tr '[:upper:]' '[:lower:]')
 sed -i "s/POSTGRES_DB=.*/POSTGRES_DB=$db_name/" .env
 
+# change pool_size in config/dev.exs to 2
+sed -i "s/pool_size: .*/pool_size: 2/" config/dev.exs
+
 # delete this bash script
 rm run.sh
 
