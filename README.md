@@ -48,17 +48,12 @@ You can use the variables in `.env` to config postgres variables in compose file
    show_sensitive_data_on_connection_error: true,
    pool_size: 2 
 ```
-In `config/dev.exs` change the ip to `{0, 0, 0, 0}` so wil be possible to access the application endpoint from the host machine.<br>
-
 
 ### 7. Get and compile dependencies
 `docker compose -f $COMPOSE_FILE -p $PROJECT_NAME run --rm dev sh` <br>
 > mix deps.get<br> 
 > mix deps.compile<br>
 > exit
-
-obs: check if you have postgres and phx_dev containers up. If not, run:<br>
-`docker compose -f $COMPOSE_FILE -p $PROJECT_NAME up -d`<br> 
 
 Visit [`http://localhost:4000/`](http://localhost:4000/) and check if Phoenix page loads<br>
 
