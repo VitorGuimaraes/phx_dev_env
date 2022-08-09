@@ -43,6 +43,9 @@ sed -i "s/POSTGRES_DB=.*/POSTGRES_DB=$db_name/" .env
 # change pool_size in config/dev.exs to 2
 sed -i "s/pool_size: .*/pool_size: 2/" config/dev.exs
 
+# change ip to local
+sed -i "s/http: [ip.*/http: [ip: {0, 0, 0, 0}, port: 4000],/" config/dev.exs
+
 # delete this bash script
 rm run.sh
 
