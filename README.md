@@ -61,7 +61,11 @@ Visit [`http://localhost:4000/`](http://localhost:4000/) and check if Phoenix pa
 Always that you create a new file for you Phoenix project using the container, it will be owned by root. <br>
 To change the ownership for your user, run in terminal: `sudo chown -R $USER *`<br>
 
-## 9. Managing images and containers
+## 9. Source .env 
+Load the environment variables<br>
+> source .env
+
+## 10. Managing images and containers
 - `docker compose -f $COMPOSE_FILE -p $PROJECT_NAME up -d`<br> 
    up services.
 
