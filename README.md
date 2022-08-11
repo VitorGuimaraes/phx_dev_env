@@ -48,8 +48,17 @@ You can use the variables in `.env` to config postgres variables in compose file
    show_sensitive_data_on_connection_error: true,
    pool_size: 2 
 ```
+### 7. Add Credo Dependency
+Check current [`credo`](https://github.com/rrrene/credo) version
+```elixir
+defp deps do
+  [
+    {:credo, "~> 1.6", only: [:dev, :test], runtime: false}
+  ]
+end
+```
 
-### 7. Get and compile dependencies
+### 8. Get and compile dependencies
 `docker compose -f $COMPOSE_FILE -p $PROJECT_NAME run --rm dev sh` <br>
 > mix deps.get<br> 
 > mix deps.compile<br>
@@ -57,15 +66,15 @@ You can use the variables in `.env` to config postgres variables in compose file
 
 Visit [`http://localhost:4000/`](http://localhost:4000/) and check if Phoenix page loads<br>
 
-## 8. Files Ownership
+## 9. Files Ownership
 Always that you create a new file for you Phoenix project using the container, it will be owned by root. <br>
 To change the ownership for your user, run in terminal: `sudo chown -R $USER *`<br>
 
-## 9. Source .env 
+## 10. Source .env 
 Load the environment variables<br>
 > source .env
 
-## 10. Managing images and containers
+## 11. Managing images and containers
 - `docker compose -f $COMPOSE_FILE -p $PROJECT_NAME up -d`<br> 
    up services.
 
