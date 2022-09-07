@@ -58,7 +58,7 @@ defp deps do
 end
 ```
 
-## 8. Source .env 
+### 8. Source .env 
 Load the environment variables<br>
 > source .env
 
@@ -68,13 +68,15 @@ Load the environment variables<br>
 > mix deps.compile<br>
 > exit
 
+### 10. Checking if is everything ok
+run `docker compose -f $COMPOSE_FILE -p $PROJECT_NAME up -d` <br>
 Visit [`http://localhost:4000/`](http://localhost:4000/) and check if Phoenix page loads<br>
 
-## 10. Files Ownership
+### 11. Files Ownership
 Always that you create a new file for you Phoenix project using the container, it will be owned by root. <br>
 To change the ownership to your user, run in terminal: `sudo chown -R $USER *`<br>
 
-## 11. Managing images and containers
+### 12. Managing images and containers
 - `docker compose -f $COMPOSE_FILE -p $PROJECT_NAME up -d`<br> 
    up services.
 
