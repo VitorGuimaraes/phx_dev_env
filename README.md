@@ -76,7 +76,14 @@ Visit [`http://localhost:4000/`](http://localhost:4000/) and check if Phoenix pa
 Always that you create a new file for you Phoenix project using the container, it will be owned by root. <br>
 To change the ownership to your user, run in terminal: `sudo chown -R $USER *`<br>
 
-### 12. Managing images and containers
+### 12. Connecting in DBeaver
+Host: `localhost`<br>
+Port: `container port`. Run `docker ps`<br>
+Database: defined in `.env`<br>
+Username: defined in `.env`<br>
+Password: defined in `.env`<br>
+
+### 13. Managing images and containers
 - `docker compose -f $COMPOSE_FILE -p $PROJECT_NAME up -d`<br> 
    up services.
 
