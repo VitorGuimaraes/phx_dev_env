@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 # delete old git files 
 rm -rf .git 
@@ -13,43 +13,44 @@ docker compose run --rm dev sh
 # give owner files to user
 sudo chown -R $USER *
 
-# project folder's name defined when create phoenix project
-project_folder=$(echo */)
+# Gets the name of all folders in the directory 
+# We have only the project folder created by Phoenix 
+project_folder_name=$(echo */)
 
 # change POSTGRES_DB in .env file accordingly with project name
-db_name="${project_folder}_dev"
-db_name="${db_name/\/""}"
-db_name=$(echo "$db_name" | tr '[:upper:]' '[:lower:]')
-sed -i "s/POSTGRES_DB=.*/POSTGRES_DB=$db_name/" .env
+postgres_db="${project_folder_name}_dev" # name is like: project_folder_name/
+postgres_db="${postgres_db/\/""}"   # remove slashes in name
+postgres_db=$(echo "$postgres_db" | tr '[:upper:]' '[:lower:]') # converts to downcase
+sed -i "s/POSTGRES_DB=.*/POSTGRES_DB=$postgres_db/" .env
 
 # change POSTGRES_HOST in .env file and hostname in config/dev.exs 
 # accordingly with postgres service name in docker-compose.yaml
 postgres_host=db # the same name defined in docker-compose.yaml
 sed -i "s/POSTGRES_HOST=.*/POSTGRES_HOST=$postgres_host/" .env
-sed -i "s/hostname: .*/hostname: \"$postgres_host\",/" ${project_folder}config/dev.exs
+sed -i "s/hostname: .*/hostname: \"$postgres_host\",/" ${project_folder_name}config/dev.exs
 
 # change pool_size in config/dev.exs to 2
-sed -i "s/pool_size: .*/pool_size: 2/" ${project_folder}config/dev.exs
+sed -i "s/pool_size: .*/pool_size: 2/" ${project_folder_name}config/dev.exs
 
 # change ip to local in config/dev.exs
-sed -i "s/http: .*/http: [ip: {0, 0, 0, 0}, port: 4000],/" ${project_folder}config/dev.exs
+sed -i "s/http: .*/http: [ip: {0, 0, 0, 0}, port: 4000],/" ${project_folder_name}config/dev.exs
 
 # phoenix project dir 
-project_dir="$(pwd)/${project_folder}"
+project_full_dir="$(pwd)/${project_folder_name}"
 
-# move phoenix project files to current path
-sudo mv -v $project_dir* $project_dir.* $(pwd)
+# copy phoenix project files to current dir, inclusive hidden files
+sudo cp -v $project_full_dir* $project_full_dir.* $(pwd)
 
-# delete the empty phoenix folder
-rm -rf $project_folder
+# delete the original phoenix folder
+rm -rf $project_folder_name
 
 # current parent dir
 current_dir=${PWD%/*}/$1
 
 # new folder name accordingly with project name
-new_dir="${current_dir}${project_folder}"
+new_dir="${current_dir}${project_folder_name}"
 
-# rename current folder with project name 
+# rename current folder with project's name 
 mv $(pwd) $new_dir
 
 # delete this bash script
