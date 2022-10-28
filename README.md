@@ -84,21 +84,21 @@ Load the environment variables
 
 ### 10. Checking if is everything ok
 
-run `docker compose up -d`
-Visit [`http://localhost:4000/`](http://localhost:4000/) and check if Phoenix page loads  
+run `docker compose up -d`  
+Visit [`http://localhost:4000/`](http://localhost:4000/) and check Phoenix page.  
 
 ### 11. Files Ownership
 
-Always that you create a new file for you Phoenix project using the container, it will be owned by root.
+Always that you create a new file for you Phoenix project using the container, it will be owned by root.  
 To change the ownership to your user, run in terminal: `sudo chown -R $USER *`  
 
 ### 12. Connecting in DBeaver
 
 Host: `localhost`  
-Port: `container port`. Check `docker ps`  
-Database: defined in `.env`  
-Username: defined in `.env  
-Password: defined in`.env`  
+Port: `container port`. Check it with `docker ps`  
+Database: POSTGRES_DB defined in `.env`  
+Username: POSTGRES_USER defined in `.env`  
+Password: POSTGRES_PASSWORD defined in `.env`  
 
 ### 13. Managing images and containers
 
