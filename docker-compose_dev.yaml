@@ -1,10 +1,10 @@
 version: "3.8"
 
-services: 
+services:
   dev:
-    build: 
+    build:
       context: .
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile
     image: ${IMAGE_NAME}
     container_name: ${CONTAINER_NAME}
     command: sh -c "./entrypoint.sh"
@@ -16,24 +16,24 @@ services:
       SECRET_KEY_BASE: ${SECRET_KEY_BASE}
       POOL_SIZE: ${POOL_SIZE}
       PORT: ${PORT}
-    ports: 
+    ports:
       - "4000:${PORT}"
     networks:
       - phx_net
     depends_on:
       - db
-  
+
   db:
     image: postgres:alpine
     container_name: ${POSTGRES_USER}
     restart: always
-    environment:  
+    environment:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_DB: ${POSTGRES_DB}
     ports:
       - "5430:${POSTGRES_PORT}"
-    # volumes:
+      # volumes:
       # - ./data:/var/lib/postgresql/data
     networks:
       - phx_net
