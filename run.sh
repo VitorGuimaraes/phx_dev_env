@@ -25,7 +25,7 @@ sed -i "s/POSTGRES_DB=.*/POSTGRES_DB=$postgres_db/" .env
 
 # change POSTGRES_HOST in .env file and hostname in config/dev.exs 
 # accordingly with postgres service name in docker-compose.yaml
-postgres_host=db # the same name defined in docker-compose.yaml
+postgres_host=db_service # MUST be the same name defined in database service name in docker-compose.yaml
 sed -i "s/POSTGRES_HOST=.*/POSTGRES_HOST=$postgres_host/" .env
 sed -i "s/hostname: .*/hostname: \"$postgres_host\",/" ${project_folder_name}config/dev.exs
 
