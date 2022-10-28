@@ -21,7 +21,7 @@ services:
     networks:
       - phx_net
     depends_on:
-      - db
+      - db_service
 
   db_service:
     image: postgres:alpine
