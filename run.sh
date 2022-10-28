@@ -35,11 +35,8 @@ sed -i "s/pool_size: .*/pool_size: 2/" ${project_folder_name}config/dev.exs
 # change ip to local in config/dev.exs
 sed -i "s/http: .*/http: [ip: {0, 0, 0, 0}, port: 4000],/" ${project_folder_name}config/dev.exs
 
-# phoenix project dir 
-project_full_dir="$(pwd)/${project_folder_name}"
-
 # copy phoenix project files to current dir, inclusive hidden files
-sudo cp -v $project_full_dir* $project_full_dir.* $(pwd)
+cp -r "${project_folder_name}." $(pwd)
 
 # delete the original phoenix folder
 rm -rf $project_folder_name
