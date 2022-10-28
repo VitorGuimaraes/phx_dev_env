@@ -36,7 +36,7 @@ sed -i "s/pool_size: .*/pool_size: 2/" ${project_folder_name}config/dev.exs
 sed -i "s/http: .*/http: [ip: {0, 0, 0, 0}, port: 4000],/" ${project_folder_name}config/dev.exs
 
 # copy phoenix project files to current dir, inclusive hidden files
-cp -r "${project_folder_name}." $(pwd)
+sudo cp -r "${project_folder_name}." $(pwd)
 
 # delete the original phoenix folder
 rm -rf $project_folder_name
@@ -92,6 +92,9 @@ if [[ "$answer" == "Y" && "$node_check" == *"v"* ]]; then
     echo "/node_modules" >> .gitignore
     echo "/.husky" >> .gitignore
 fi
+
+docker stop $POSTGRES_HOST
+docker rm $POSTGRES_HOST
 
 # update current shell references
 exec $SHELL
