@@ -23,7 +23,7 @@ services:
     depends_on:
       - db
 
-  db:
+  db_service:
     image: postgres:alpine
     container_name: ${POSTGRES_HOST}
     restart: always
