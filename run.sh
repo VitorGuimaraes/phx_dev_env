@@ -14,8 +14,15 @@ docker compose run --rm dev sh
 sudo chown -R $USER *
 
 # Gets the name of all folders in the directory 
-# We have only the project folder created by Phoenix 
+# At this point we have only the project folder created by Phoenix 
 project_folder_name=$(echo */)
+
+# If no project folder is found, finish the script
+if [[ "$project_folder_name" == "*/" ]]; then
+    echo "No project folder found, finishing..."
+    sleep 1
+    exit 
+fi
 
 # change POSTGRES_DB in .env file accordingly with project name
 postgres_db="${project_folder_name}_dev" # name is like: project_folder_name/
