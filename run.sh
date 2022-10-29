@@ -39,7 +39,7 @@ sed -i "s/http: .*/http: [ip: {0, 0, 0, 0}, port: 4000],/" ${project_folder_name
 sudo cp -r "${project_folder_name}." $(pwd)
 
 # delete the original phoenix folder
-rm -rf $project_folder_name
+sudo rm -rf $project_folder_name
 
 # current parent dir
 current_dir=${PWD%/*}/$1
@@ -48,7 +48,7 @@ current_dir=${PWD%/*}/$1
 new_dir="${current_dir}${project_folder_name}"
 
 # rename current folder with project's name 
-mv $(pwd) $new_dir
+sudo mv $(pwd) $new_dir
 
 # delete this bash script
 rm run.sh
@@ -56,9 +56,10 @@ rm run.sh
 # init git
 git init
 
-
+printf "\n"
 read -p "Do you want to install husky, Commitlint and Commitizen? [Y/n] " answer 
 answer=${answer:-Y}
+printf "\n"
 
 node_check=$(node -v)
 
@@ -70,6 +71,7 @@ fi
 
 # If user want to install husky, commitlint and commitizen and have Node installed
 if [[ "$answer" == "Y" && "$node_check" == *"v"* ]]; then
+    printf "Installing npm packages. Press Enter to skip configurations\n"
     npm init
 
     # install husky, commitlint and commitizen
@@ -93,6 +95,7 @@ if [[ "$answer" == "Y" && "$node_check" == *"v"* ]]; then
     echo "/.husky" >> .gitignore
 fi
 
+printf "\nStopping container ${POSTGRES_HOST}..."
 docker stop $POSTGRES_HOST
 docker rm $POSTGRES_HOST
 
