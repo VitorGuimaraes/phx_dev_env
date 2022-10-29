@@ -87,6 +87,8 @@ if [[ "$answer" == "Y" && "$node_check" == *"v"* ]]; then
     npx husky install
     npx husky add .husky/commit-msg 'npx --no -- commitlint --edit "$1"'
 
+    sudo chown -R $USER .*
+
     # add files and folders to gitignore
     echo "commitlint.config.js" >> .gitignore
     echo "package-lock.json" >> .gitignore
