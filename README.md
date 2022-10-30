@@ -44,7 +44,11 @@ In the container's terminal, run:
 
 Use `--no-ecto` at the end of this command if you don't need database.
 
-### 6. Add Credo Dependency (optional)
+### 6. Install CommitLint, Husky and Commitizen (optional)
+
+Optionally you can install these tools, so you can easily implement [`Conventional Commits`](https://www.conventionalcommits.org/) in your project.
+
+### 7. Add Credo Dependency (optional)
 
 Check current [`credo`](https://github.com/rrrene/credo) version
 
@@ -56,29 +60,29 @@ defp deps do
 end
 ```
 
-### 7. Source .env
+### 8. Source .env
 
 Load the environment variables  
 > source .env
 
-### 8. Get and compile dependencies
+### 9. Get and compile dependencies
 
 `docker compose run --rm dev sh`
 > mix deps.get  
 > mix deps.compile  
 > exit
 
-### 9. Checking if is everything ok
+### 10. Checking if is everything ok
 
 run `docker compose up -d`  
 Visit [`http://localhost:4000/`](http://localhost:4000/) and check Phoenix page.  
 
-### 10. Files Ownership
+### 11. Files Ownership
 
 Always that you create a new file for you Phoenix project using the container, it will be owned by root.  
 To change the ownership to your user, run in terminal: `sudo chown -R $USER *`  
 
-### 11. Connecting in DBeaver
+### 12. Connecting in DBeaver
 
 Host: `localhost`  
 Port: `container port`. Check it with `docker ps`  
@@ -86,7 +90,7 @@ Database: POSTGRES_DB defined in `.env`
 Username: POSTGRES_USER defined in `.env`  
 Password: POSTGRES_PASSWORD defined in `.env`  
 
-### 12. Managing images and containers
+### 13. Managing images and containers
 
 - `docker compose up -d`  
    up services.
