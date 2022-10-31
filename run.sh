@@ -95,13 +95,6 @@ if [[ "$answer" == "Y" && "$node_check" == *"v"* ]]; then
     npx husky add .husky/commit-msg 'npx --no -- commitlint --edit "$1"'
 
     sudo chown -R $USER .*
-
-    # add files and folders to gitignore
-    echo "commitlint.config.js" >> .gitignore
-    echo "package-lock.json" >> .gitignore
-    echo "package.json" >> .gitignore
-    echo "/node_modules" >> .gitignore
-    echo "/.husky" >> .gitignore
 fi
 
 printf "\nStopping container ${POSTGRES_HOST}..."
