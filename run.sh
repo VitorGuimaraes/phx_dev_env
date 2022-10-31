@@ -36,6 +36,19 @@ postgres_host=db_service # MUST be the same name defined in database service nam
 sed -i "s/POSTGRES_HOST=.*/POSTGRES_HOST=$postgres_host/" .env
 sed -i "s/hostname: .*/hostname: \"$postgres_host\",/" ${project_folder_name}config/dev.exs
 
+read -p "Do you want to use UUID? [Y/n] " uuid_answer 
+uuid_answer=${uuid_answer:-Y}
+printf "\n"
+
+if [[ "$uuid_answer" == "Y" ]]; then
+    # Gets "config :PROJECT_NAME, PROJECT_NAME.Repo,"
+    config_line=$(sed -n '/.Repo,/p' ${project_folder_name}config/dev.exs)
+    
+    sed -i "12i\  \n$config_line" ${project_folder_name}config/config.exs
+    sed -i '14i\  migration_primary_key: [type: :binary_id],' ${project_folder_name}config/config.exs
+    sed -i '15i\  migration_foreign_key: [type: :binary_id]' ${project_folder_name}config/config.exs
+fi
+
 # change pool_size in config/dev.exs to 2
 sed -i "s/pool_size: .*/pool_size: 2/" ${project_folder_name}config/dev.exs
 
@@ -62,20 +75,6 @@ rm run.sh
 
 # init git
 git init
-
-printf "\n"
-read -p "Do you want to UUID? [Y/n] " uuid_answer 
-uuid_answer=${uuid_answer:-Y}
-printf "\n"
-
-if [[ "$uuid_answer" == "Y" ]]; then
-    # Gets "config :PROJECT_NAME, PROJECT_NAME.Repo,"
-    config_line=$(sed -n '/.Repo,/p' config/dev.exs)
-    
-    sed -i "12i\  \n$config_line" config/config.exs
-    sed -i '14i\  migration_primary_key: [type: :binary_id],' config/config.exs
-    sed -i '15i\  migration_foreign_key: [type: :binary_id]' config/config.exs
-fi
 
 printf "\n"
 read -p "Do you want to install husky, Commitlint and Commitizen? [Y/n] " answer 
