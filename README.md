@@ -46,7 +46,8 @@ Use `--no-ecto` at the end of this command if you don't need database.
 
 ### 6. Install CommitLint, Husky and Commitizen (optional)
 
-Optionally you can install these tools, so you can easily implement GitFlow and [`Conventional Commits`](https://www.conventionalcommits.org/) in your project.
+Optionally you can install these tools, so you can easily implement GitFlow and [`Conventional Commits`](https://www.conventionalcommits.org/) in your project.  
+After you exit from the container in step 5, the installer will ask you for install.  
 We also recommend that you use [`Gitmoji`](https://gitmoji.dev/)
 
 ### 7. Add Credo Dependency (optional)
