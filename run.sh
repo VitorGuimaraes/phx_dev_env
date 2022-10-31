@@ -69,7 +69,10 @@ uuid_answer=${uuid_answer:-Y}
 printf "\n"
 
 if [[ "$uuid_answer" == "Y" ]]; then
-    sed -i '12i\\nconfig :project_name, Project.Repo,' config/config.exs
+    # Gets "config :PROJECT_NAME, PROJECT_NAME.Repo,"
+    config_line=$(sed -n '/.Repo,/p' config/dev.exs)
+    
+    sed -i "12i\  \n$config_line" config/config.exs
     sed -i '14i\  migration_primary_key: [type: :binary_id],' config/config.exs
     sed -i '15i\  migration_foreign_key: [type: :binary_id]' config/config.exs
 fi
