@@ -64,6 +64,17 @@ rm run.sh
 git init
 
 printf "\n"
+read -p "Do you want to UUID? [Y/n] " uuid_answer 
+uuid_answer=${uuid_answer:-Y}
+printf "\n"
+
+if [[ "$uuid_answer" == "Y" ]]; then
+    sed -i '12i\\nconfig :project_name, Project.Repo,' config/config.exs
+    sed -i '14i\  migration_primary_key: [type: :binary_id],' config/config.exs
+    sed -i '15i\  migration_foreign_key: [type: :binary_id]' config/config.exs
+fi
+
+printf "\n"
 read -p "Do you want to install husky, Commitlint and Commitizen? [Y/n] " answer 
 answer=${answer:-Y}
 printf "\n"
