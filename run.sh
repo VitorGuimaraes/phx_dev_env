@@ -3,8 +3,6 @@
 # delete old git files 
 rm -rf .git 
 
-mv .env.sample .env
-
 source .env
 
 sudo chmod +x *.sh
@@ -72,7 +70,7 @@ sed -i "s/pool_size: .*/pool_size: 2/" ${project_folder_name}config/dev.exs
 sed -i "s/http: .*/http: [ip: {0, 0, 0, 0}, port: 4000],/" ${project_folder_name}config/dev.exs
 
 # change db name in .env file
-sed -i "s/POSTGRES_DB=.*/POSTGRES_DB=${project_folder_name}_db/" .env.sample
+sed -i "s/POSTGRES_DB=.*/POSTGRES_DB=${project_folder_name}_db/" .env
 
 # copy phoenix project files to current dir, inclusive hidden files
 sudo cp -r "${project_folder_name}." $(pwd)

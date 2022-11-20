@@ -22,9 +22,9 @@ The project is created with:
 In your terminal use `git` to clone the repository locally.
 > git clone <https://github.com/VitorGuimaraes/phx_dev_env.git>
 
-### 2. Setup your project variables in `.env.sample`
+### 2. Setup your project variables in `.env`
 
-In `.env.sample` you can setup your postgres variables and some variables used in [`docker-compose.yaml`](https://github.com/VitorGuimaraes/phx_dev_env/blob/master/docker-compose.yaml).
+In `.env` you can setup your postgres variables and some variables used in [`docker-compose.yaml`](https://github.com/VitorGuimaraes/phx_dev_env/blob/master/docker-compose.yaml).
 
 ### 3. Give permission to execute the bash scripts
 
