@@ -7,8 +7,24 @@ mv .env.sample .env
 
 source .env
 
+sudo chmod +x *.sh
+
+# check if phx_dev containers are running and stop them
+containers=$(docker ps)
+if [[ "$containers" == *"phx_dev"* ]]; then
+    printf "stopping container phx_dev..."
+    docker stop phx_dev
+    docker rm phx_dev
+fi
+
+if [[ "$containers" == *"postgres_service"* ]]; then
+    printf "stopping container postgres_service..."
+    docker stop postgres_service
+    docker rm postgres_service
+fi
+
 # Runs container with shell. You should run "mix phx.new your_project_name" on it
-docker compose run --rm dev sh
+docker compose run --rm phoenix_service sh
 
 # give owner files to user
 sudo chown -R $USER *
@@ -32,7 +48,7 @@ sed -i "s/POSTGRES_DB=.*/POSTGRES_DB=$postgres_db/" .env
 
 # change POSTGRES_HOST in .env file and hostname in config/dev.exs 
 # accordingly with postgres service name in docker-compose.yaml
-postgres_host=db_service # MUST be the same name defined in database service name in docker-compose.yaml
+postgres_host=postgres_service # MUST be the same name defined in database service name in docker-compose.yaml
 sed -i "s/POSTGRES_HOST=.*/POSTGRES_HOST=$postgres_host/" .env
 sed -i "s/hostname: .*/hostname: \"$postgres_host\",/" ${project_folder_name}config/dev.exs
 
@@ -54,6 +70,9 @@ sed -i "s/pool_size: .*/pool_size: 2/" ${project_folder_name}config/dev.exs
 
 # change ip to local in config/dev.exs
 sed -i "s/http: .*/http: [ip: {0, 0, 0, 0}, port: 4000],/" ${project_folder_name}config/dev.exs
+
+# change db name in .env file
+sed -i "s/POSTGRES_DB=.*/POSTGRES_DB=${project_folder_name}_db/" .env.sample
 
 # copy phoenix project files to current dir, inclusive hidden files
 sudo cp -r "${project_folder_name}." $(pwd)
