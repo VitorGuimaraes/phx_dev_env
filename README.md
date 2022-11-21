@@ -69,7 +69,7 @@ Load the environment variables
 
 ### 9. Get and compile dependencies
 
-`docker compose run --rm dev sh`
+`docker compose run --rm phoenix_service sh`
 > mix deps.get  
 > mix deps.compile  
 > exit
@@ -103,7 +103,7 @@ Password: POSTGRES_PASSWORD defined in `.env`
 - `docker exec -it $CONTAINER_NAME sh`  
    exec shell in a running container.
 
-- `docker compose run --rm dev sh`  
+- `docker compose run --rm phoenix_service sh`  
    run a new container with shell and clean up when exit.
 
 - `docker rm $(docker ps -aq) -f`  
