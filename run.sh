@@ -39,7 +39,8 @@ if [[ "$project_folder_name" == "*/" ]]; then
 fi
 
 # change POSTGRES_DB in .env file accordingly with project name
-postgres_db="${project_folder_name}_dev_db" # name is like: project_folder_name/
+# Default name defined by Phoenix is: project_name_dev
+postgres_db="${project_folder_name}_dev" # name is like: project_folder_name/
 postgres_db="${postgres_db/\/""}"   # remove slashes in name
 postgres_db=$(echo "$postgres_db" | tr '[:upper:]' '[:lower:]') # converts to downcase
 sed -i "s/POSTGRES_DB=.*/POSTGRES_DB=$postgres_db/" .env
