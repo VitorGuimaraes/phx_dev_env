@@ -39,7 +39,7 @@ if [[ "$project_folder_name" == "*/" ]]; then
 fi
 
 # change POSTGRES_DB in .env file accordingly with project name
-postgres_db="${project_folder_name}_dev" # name is like: project_folder_name/
+postgres_db="${project_folder_name}_dev_db" # name is like: project_folder_name/
 postgres_db="${postgres_db/\/""}"   # remove slashes in name
 postgres_db=$(echo "$postgres_db" | tr '[:upper:]' '[:lower:]') # converts to downcase
 sed -i "s/POSTGRES_DB=.*/POSTGRES_DB=$postgres_db/" .env
@@ -68,9 +68,6 @@ sed -i "s/pool_size: .*/pool_size: 2/" ${project_folder_name}config/dev.exs
 
 # change ip to local in config/dev.exs
 sed -i "s/http: .*/http: [ip: {0, 0, 0, 0}, port: 4000],/" ${project_folder_name}config/dev.exs
-
-# change db name in .env file
-sed -i "s/POSTGRES_DB=.*/POSTGRES_DB=\"$project_folder_name_db\"/" .env
 
 # copy phoenix project files to current dir, inclusive hidden files
 sudo cp -r "${project_folder_name}." $(pwd)
