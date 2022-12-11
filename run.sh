@@ -96,16 +96,16 @@ read -p "Do you want to install husky, Commitlint and Commitizen? [Y/n] " answer
 answer=${answer:-Y}
 printf "\n"
 
-node_check=$(node -v)
+node_check=$(whereis node)
 
 # If user want to install husky, commitlint and commitizen but haven't Node installed
-if [[ "$answer" == "Y" && "$node_check" != *"v"* ]]; then
+if [[ "$answer" == "Y" && "$node_check" != *"node"* ]]; then
     printf "Node is not installed. Install it and create your project again.\n"
     sleep 2
 fi
 
 # If user want to install husky, commitlint and commitizen and have Node installed
-if [[ "$answer" == "Y" && "$node_check" == *"v"* ]]; then
+if [[ "$answer" == "Y" && "$node_check" == *"node"* ]]; then
     printf "Installing npm packages. Press Enter to skip configurations\n"
     npm init
 
