@@ -1,13 +1,14 @@
 version: "3.8"
 
 services:
-  phoenix_service:
+  api_service:
     build:
       context: .
       dockerfile: Dockerfile
     image: ${IMAGE_NAME}
     container_name: ${CONTAINER_NAME}
-    command: sh -c "./entrypoint.sh"
+    tty: true
+    stdin_open: true
     volumes:
       - .:/app
     restart: on-failure
@@ -15,15 +16,15 @@ services:
       DATABASE_URL: ${DATABASE_URL}
       SECRET_KEY_BASE: ${SECRET_KEY_BASE}
       POOL_SIZE: ${POOL_SIZE}
-      PORT: ${PORT}
+      PORT: ${API_PORT}
     ports:
-      - "4000:${PORT}"
+      - "4000:${API_PORT}"
     networks:
       - phx_net
     depends_on:
-      - postgres_service
+      - db_service
 
-  postgres_service:
+  db_service:
     image: postgres:alpine
     container_name: ${POSTGRES_HOST}
     restart: always
