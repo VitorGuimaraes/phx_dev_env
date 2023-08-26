@@ -8,12 +8,12 @@ sudo chmod +x *.sh
 
 # check Docker installation
 docker_check=$(whereis docker)
+dockercompose_check=$(whereis compose)
 if [[ "$docker_check" == *"/etc/docker"* && 
     "$dockercompose_check" == *"/usr/bin/compose"* ]]; then
-    printf "Docker already installed!\n"
 else 
     printf "Installing Docker...\n"
-    docker.sh
+    bash docker.sh
 fi
 
 # check if project services are running and clean them
