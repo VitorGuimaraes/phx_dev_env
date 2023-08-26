@@ -6,6 +6,16 @@ source .env
 rm -rf .git 
 sudo chmod +x *.sh
 
+# check Docker installation
+docker_check=$(whereis docker)
+if [[ "$docker_check" == *"/etc/docker"* && 
+    "$dockercompose_check" == *"/usr/bin/compose"* ]]; then
+    printf "Docker already installed!\n"
+else 
+    printf "Installing Docker...\n"
+    docker.sh
+fi
+
 # check if project services are running and clean them
 running_containers=$(docker ps)
 if [[ "$running_containers" == *"api_service"* ]]; then
@@ -35,12 +45,6 @@ elif [[ "$uuid_answer" == "n" && "$use_ecto" == "Y" ]]; then
 elif [[ "$uuid_answer" == "n" && "$use_ecto" == "n" ]]; then
     docker compose run --rm api_service sh -c "mix phx.new --no-ecto $project_name"
 fi
-
-if [[ "$docker_check" == *"/etc/docker"* && 
-    "$dockercompose_check" == *"/usr/bin/compose"* ]]; then
-    array[docker]=$installed
-else 
-
 
 sudo chown -R $USER *
 
