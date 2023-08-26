@@ -21,14 +21,26 @@ if [[ "$running_containers" == *"db_service"* ]]; then
 fi
 
 read -p "What is the Project's Name? " project_name
+read -p "Do you want to use Ecto? [Y/n] " use_ecto 
+use_ecto=${use_ecto:-Y}
 read -p "Do you want to use UUID? [Y/n] " uuid_answer 
 uuid_answer=${uuid_answer:-Y}
 
-if [[ "$uuid_answer" == "Y" ]]; then
+if [[ "$uuid_answer" == "Y" && "$use_ecto" == "Y" ]]; then
     docker compose run --rm api_service sh -c "mix phx.new --binary-id $project_name"
-else 
+elif [[ "$uuid_answer" == "Y" && "$use_ecto" == "n" ]]; then
+    docker compose run --rm api_service sh -c "mix phx.new --binary-id --no-ecto $project_name"
+elif [[ "$uuid_answer" == "n" && "$use_ecto" == "Y" ]]; then
     docker compose run --rm api_service sh -c "mix phx.new $project_name"
+elif [[ "$uuid_answer" == "n" && "$use_ecto" == "n" ]]; then
+    docker compose run --rm api_service sh -c "mix phx.new --no-ecto $project_name"
 fi
+
+if [[ "$docker_check" == *"/etc/docker"* && 
+    "$dockercompose_check" == *"/usr/bin/compose"* ]]; then
+    array[docker]=$installed
+else 
+
 
 sudo chown -R $USER *
 
