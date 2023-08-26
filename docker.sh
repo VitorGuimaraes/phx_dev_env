@@ -20,7 +20,7 @@ sudo docker run hello-world
 mkdir $HOME/.docker/
 touch $HOME/.docker/config.jsonf
 echo '{' >> $HOME/.docker/config.json
-echo '\t"psFormat": "\\nName: \\t\\t{{.Names}}\\tCommand: {{.Command}}\\nNetworks: \\t{{.Networks}}\\nRunningFor: \\t{{.RunningFor}}\\nPorts: \\t\\t{{.Ports}}"' >> $HOME/.docker/config.json
+echo '"psFormat": "\\nName: \\t\\t{{.Names}}\\tCommand: {{.Command}}\\nNetworks: \\t{{.Networks}}\\nRunningFor: \\t{{.RunningFor}}\\nPorts: \\t\\t{{.Ports}}"' >> $HOME/.docker/config.json
 echo '}' >> $HOME/.docker/config.json
 
 sudo usermod -aG docker $USER
