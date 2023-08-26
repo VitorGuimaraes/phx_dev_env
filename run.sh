@@ -11,6 +11,7 @@ docker_check=$(whereis docker)
 dockercompose_check=$(whereis compose)
 if [[ "$docker_check" == *"/etc/docker"* && 
     "$dockercompose_check" == *"/usr/bin/compose"* ]]; then
+    printf "Docker is already installed...\n"
 else 
     printf "Installing Docker...\n"
     bash docker.sh
