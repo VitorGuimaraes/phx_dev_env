@@ -87,6 +87,7 @@ sudo mv dev.sh scripts/
 sudo chown -R $USER *
 
 rm run.sh
+rm docker.sh
 git init
 
 function check_node_install() {
