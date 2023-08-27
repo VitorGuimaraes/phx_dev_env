@@ -1,4 +1,4 @@
-FROM elixir:1.14-alpine
+FROM elixir:1.15.4-alpine
 
 RUN apk add --no-cache openssl && \
     apk add --no-cache inotify-tools && \
