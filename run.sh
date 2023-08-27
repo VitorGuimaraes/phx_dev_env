@@ -110,7 +110,6 @@ function install_husky_commitlint_commitizen() {
     if [[ "$node_check" == *"node"* ]]; then  
         npm init
 
-        printf "*** obs: You may let the next following fields blank ***\n"
         # install husky, commitlint and commitizen
         npm install -g husky @commitlint/{cli,config-conventional} commitizen --save-dev --save-exact
 
