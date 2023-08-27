@@ -133,6 +133,7 @@ read -p "Do you want to set Husky, Commitlint and Commitizen on $project_name pr
 answer=${answer:-Y}
 
 if [[ "$answer" == "Y" ]]; then
+    printf "*** obs: You may let the next following fields blank ***"
     install_husky_commitlint_commitizen
 fi
 
