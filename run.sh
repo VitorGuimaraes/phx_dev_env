@@ -107,10 +107,10 @@ function check_node_install() {
 function install_husky_commitlint_commitizen() {
     check_node_install
 
-    if [[ "$node_check" == *"node"* ]]; then 
-        printf "Installing npm packages. Press Enter to skip configurations\n"  
+    if [[ "$node_check" == *"node"* ]]; then  
         npm init
 
+        printf "*** obs: You may let the next following fields blank ***\n"
         # install husky, commitlint and commitizen
         npm install -g husky @commitlint/{cli,config-conventional} commitizen --save-dev --save-exact
 
@@ -129,7 +129,6 @@ function install_husky_commitlint_commitizen() {
 }
 
 printf "\n"
-printf "*** obs: You may let the next following fields blank ***\n"
 read -p "Do you want to set Husky, Commitlint and Commitizen on $project_name project? [Y/n] " answer
 answer=${answer:-Y}
 
