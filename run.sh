@@ -129,12 +129,11 @@ function install_husky_commitlint_commitizen() {
 }
 
 printf "\n"
-printf "*** obs: You may let the next following fields blank ***"
+printf "*** obs: You may let the next following fields blank ***\n"
 read -p "Do you want to set Husky, Commitlint and Commitizen on $project_name project? [Y/n] " answer
 answer=${answer:-Y}
 
 if [[ "$answer" == "Y" ]]; then
-    printf "*** obs: You may let the next following fields blank ***"
     install_husky_commitlint_commitizen
 fi
 
