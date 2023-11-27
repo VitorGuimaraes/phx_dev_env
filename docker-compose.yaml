@@ -43,3 +43,4 @@ networks:
   phx_net:
     name: phx_net
     driver: bridge
+    external: true
