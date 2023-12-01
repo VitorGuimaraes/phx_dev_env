@@ -1,3 +1,5 @@
+![Elixir](https://img.shields.io/badge/elixir-%234B275F.svg?style=for-the-badge&logo=elixir&logoColor=white)
+
 # Phoenix Development Environment
 
 Set up your environment without install Elixir and Phoenix locally.
