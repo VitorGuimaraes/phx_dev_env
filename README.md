@@ -51,7 +51,7 @@ Check current [`credo`](https://github.com/rrrene/credo) version
 ```elixir
 defp deps do
   [
-    {:credo, "~> 1.6", only: [:dev, :test], runtime: false}
+    {:credo, "~> 1.7", only: [:dev, :test], runtime: false}
   ]
 end
 ```
@@ -63,7 +63,7 @@ Load the environment variables
 
 ### 8. Get and compile dependencies
 
-`docker compose run --rm phoenix_service sh`
+`docker compose run --rm api_service sh`
 > mix deps.get  
 > mix deps.compile  
 > exit
