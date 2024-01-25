@@ -5,6 +5,7 @@ RUN apk add --no-cache openssl && \
     mix local.hex --force && \
     mix local.rebar --force && \
     mix archive.install hex phx_new --force && \
+    apk add git && \
     apk add --no-cache make
 
 ENV APP_HOME /app
