@@ -1,8 +1,8 @@
 app:
 	sh -c "iex -S mix phx.server"
 
-app.mix:
-	sh -c "mix $(filter-out $@,$(MAKECMDGOALS))"
+app.migrate:
+	sh -c "mix ecto.migrate"
 
 app.test:
 	sh -c "MIX_ENV=test mix test $(filter-out $@,$(MAKECMDGOALS)) && \
