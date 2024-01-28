@@ -1,13 +1,12 @@
 #!/bin/bash
 source .env
-sudo chown -R $USER *
 
 # check if project services are running and clean them
 running_containers=$(docker ps)
-if [[ "$running_containers" == *"api_service"* ]]; then
-    printf "stopping container api_service..."
-    docker stop api_service 
-    docker rm api_service -f
+if [[ "$running_containers" == *"app_service"* ]]; then
+    printf "stopping container app_service..."
+    docker stop app_service 
+    docker rm app_service -f
 fi
 
 if [[ "$running_containers" == *"db_service"* ]]; then
@@ -17,4 +16,4 @@ if [[ "$running_containers" == *"db_service"* ]]; then
 fi
 
 docker compose up -d 
-docker exec -it $CONTAINER_NAME sh
+docker exec -it $APP_CONTAINER_NAME sh
