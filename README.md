@@ -6,7 +6,7 @@
 # Phoenix Development Environment
 
 Set up your environment without install Elixir and Phoenix locally.
-By this way, you don't need to download, install and configure dependencies or create and build a Docker image manually by yourself to start developing.
+By this way, you don't need to download, install and configure dependencies or create and build a Docker image manually by yourself to start developing a new project.
 
 ## Technologies
 
