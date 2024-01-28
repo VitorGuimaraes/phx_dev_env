@@ -54,11 +54,12 @@ sudo chown -R $USER *
 postgres_db="${project_name}_dev" # name is like: project_name
 sed -i "s/POSTGRES_DB=.*/POSTGRES_DB=$postgres_db/" .env
 
-# change POSTGRES_HOST in .env file and hostname in config/dev.exs 
+# change POSTGRES_HOST in .env file and hostname in config/dev.exs and config/test.exs
 # accordingly to postgres service name in docker-compose.yaml (defined as db_service)
 postgres_host="db_service" # MUST be the same name defined in database service name in docker-compose.yaml
 sed -i "s/POSTGRES_HOST=.*/POSTGRES_HOST=$postgres_host/" .env
 sed -i "s/hostname: .*/hostname: \"$postgres_host\",/" ${project_name}/config/dev.exs
+sed -i "s/hostname: .*/hostname: \"$postgres_host\",/" ${project_name}/config/test.exs
 
 # change pool_size in config/dev.exs to 2
 sed -i "s/pool_size: .*/pool_size: 2/" ${project_name}/config/dev.exs
@@ -83,7 +84,7 @@ sudo mv $(pwd) $new_project_path
 sudo mkdir scripts
 sudo mv dev.sh scripts/
 
-# give owner files to user
+# give ownership of files to user
 sudo chown -R $USER *
 
 rm run.sh
@@ -128,7 +129,7 @@ function install_husky_commitlint_commitizen() {
 }
 
 printf "\n"
-read -p "Do you want to set Husky, Commitlint and Commitizen on $project_name project? [Y/n] " answer
+read -p "Do you want to set up Husky, Commitlint and Commitizen on $project_name project? [Y/n] " answer
 answer=${answer:-Y}
 
 if [[ "$answer" == "Y" ]]; then
