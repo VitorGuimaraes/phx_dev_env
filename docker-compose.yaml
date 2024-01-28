@@ -1,12 +1,12 @@
 version: "3.8"
 
 services:
-  api_service:
+  app_service:
     build:
       context: .
       dockerfile: Dockerfile
-    image: ${IMAGE_NAME}
-    container_name: ${CONTAINER_NAME}
+    image: ${APP_IMAGE_NAME}
+    container_name: ${APP_CONTAINER_NAME}
     tty: true
     stdin_open: true
     volumes:
@@ -16,17 +16,17 @@ services:
       DATABASE_URL: ${DATABASE_URL}
       SECRET_KEY_BASE: ${SECRET_KEY_BASE}
       POOL_SIZE: ${POOL_SIZE}
-      PORT: ${API_PORT}
+      PORT: ${APP_PORT}
     ports:
-      - "4000:${API_PORT}"
+      - "4000:${APP_PORT}"
     networks:
-      - phx_net
+      - app_net
     depends_on:
       - db_service
 
   db_service:
     image: postgres:alpine
-    container_name: ${POSTGRES_HOST}
+    container_name: ${DB_CONTAINER_NAME}
     restart: always
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
@@ -37,10 +37,9 @@ services:
       # volumes:
       # - ./data:/var/lib/postgresql/data
     networks:
-      - phx_net
+      - app_net
 
 networks:
-  phx_net:
-    name: phx_net
+  app_net:
+    name: app_net
     driver: bridge
-    external: true
