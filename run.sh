@@ -54,17 +54,15 @@ sudo chown -R $USER *
 postgres_db="${project_name}_dev" # name is like: project_name
 sed -i "s/POSTGRES_DB=.*/POSTGRES_DB=$postgres_db/" .env
 
-# change POSTGRES_HOST in .env file and hostname in config/dev.exs and config/test.exs
+# change hostname in config/dev.exs and config/test.exs
 # accordingly to postgres service name in docker-compose.yaml (defined as db_service)
-postgres_host="db_service" # MUST be the same name defined in database service name in docker-compose.yaml
-sed -i "s/POSTGRES_HOST=.*/POSTGRES_HOST=$postgres_host/" .env
-sed -i "s/hostname: .*/hostname: \"$postgres_host\",/" ${project_name}/config/dev.exs
-sed -i "s/hostname: .*/hostname: \"$postgres_host\",/" ${project_name}/config/test.exs
+sed -i "s/hostname: .*/hostname: \"$POSTGRES_HOST\",/" ${project_name}/config/dev.exs
+sed -i "s/hostname: .*/hostname: \"$POSTGRES_HOST\",/" ${project_name}/config/test.exs
 
 # change pool_size in config/dev.exs to 2
 sed -i "s/pool_size: .*/pool_size: 2/" ${project_name}/config/dev.exs
 # change ip to local in config/dev.exs
-sed -i "s/http: .*/http: [ip: {0, 0, 0, 0}, port: $API_PORT],/" ${project_name}/config/dev.exs
+sed -i "s/http: .*/http: [ip: {0, 0, 0, 0}, port: $APP_PORT],/" ${project_name}/config/dev.exs
 
 # copy phoenix project files to current path, including hidden files
 sudo cp -r "${project_name}/." $(pwd)
