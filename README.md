@@ -10,7 +10,7 @@ By this way, you don't need to download, install and configure dependencies or c
 
 ## Technologies
 
-The project is created with:
+The project uses:
 
 - Docker
 - Docker compose
